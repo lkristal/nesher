@@ -1,7 +1,12 @@
 <?php 
-		$database = "nesher_live";
-		$mysqli = new mysqli("127.0.0.1", "root", "", $database); 
-		$mysqli->select_db($database) or die( "Unable to select database");
+		$db = parse_ini_file("config.ini");
+		$user = $db['user'];
+		$pass = $db['pass'];
+		$name = $db['name'];
+		$host = $db['host'];
+
+		$mysqli = new mysqli($host, $user, $pass, $name); 
+		$mysqli->select_db($name) or die("Unable to select database".$name);
 ?>
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 	<div class="container-fluid">
