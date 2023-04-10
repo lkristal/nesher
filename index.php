@@ -16,12 +16,14 @@
 						$rowcount = mysqli_num_rows( $result );
 						for($i=0; $i<$rowcount; $i++)
 						{ ?>
-							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?=$i ?>" class="active" aria-current="true" aria-label="Slide <?=$i+1 ?>"></button>
+							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?=$i ?>" class="<?=$active ?>" aria-current="true" aria-label="Slide <?=$i+1 ?>"></button>
 						<?php
+							$active="";
 						} ?>
 				</div>
 				<div class="carousel-inner">
 					<?php 
+						$active = "active";
 						while ($row = $result->fetch_assoc()) {
 						?>
 							<div class="carousel-item <?=$active ?>">
@@ -56,7 +58,7 @@
 						if ($result = $mysqli->query($query)) {
 							while ($row = $result->fetch_assoc()) {
 						?>
-							<div class="col-6 col-md-4">
+							<div class="col-12 col-md-4">
 								<div class="card m-2 bg-dark bg-opacity-25">
 									<img class="card-img-top" class="w-100" src="images/<?=$row["path"] ?>" alt="<?=$row["name"] ?>">
 									<div class="card-body">

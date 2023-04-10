@@ -23,6 +23,20 @@
                     <h1 class="display-5 fw-bold lh-1 mb-3"><?=$row["name"] ?></h1>
                     <p class="lead"><?=$row["description"]?></p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <?php 
+                        $query = "SELECT f.* from files f inner join file_product fp on f.id = fp.file_id where fp.product_id=".$row["id"];
+                        if ($resultfiles = $mysqli->query($query)) {
+                            while ($rowfiles = $resultfiles->fetch_assoc()) {
+                        ?>
+                            <a type="button" target="_blank" href="files/<?=$rowfiles["path"] ?>"
+                                class="btn btn-primary btn-lg px-4 me-md-2">
+                                <?=$rowfiles["path"] ?>
+                            </a>
+                            <?php
+                            }
+                            $resultfiles->free();
+                        }?>
+
                         <?php 
 						if ($row["providerLink_url"]) {
 						?>

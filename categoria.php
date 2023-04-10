@@ -36,7 +36,7 @@
             $query = "SELECT name, description, slug,  images.path from products inner join images on images.id = products.". $innerid ." where products.deleted_at is null AND category_id=".$id;
             if ($result = $mysqli->query($query)) {
                 while ($row = $result->fetch_assoc()) { ?> 
-                    <div class="col-6 col-md-4">
+                    <div class="col-12 col-md-4">
                         <div class="card m-2 bg-dark bg-opacity-25">
                             <img class="card-img-top" class="w-100" src="images/<?=$row["path"] ?>" alt="<?=$row["name"] ?>">
                             <div class="card-body">

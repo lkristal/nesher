@@ -8,7 +8,7 @@
 		$mysqli = new mysqli($host, $user, $pass, $name); 
 		$mysqli->select_db($name) or die("Unable to select database".$name);
 ?>
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
 	<div class="container-fluid">
 		<a class="navbar-brand" href=".">
 			<img src="images/logo.jpg" alt="" width="232" height="71" class="d-inline-block align-text-top">
@@ -20,7 +20,7 @@
 		<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 			<ul class="navbar-nav flex-grow-1">
 					<?php 
-						$query = "SELECT * from categories where visible_menu=1";
+						$query = "SELECT * from categories where visible_menu=1 and deleted_at is null";
 						if ($result = $mysqli->query($query)) {
 							while ($row = $result->fetch_assoc()) {
 								$active = (!isset($_GET["category_id"]) ? "" : ($row["id"] == $_GET["category_id"] ? "text-primary fw-bolder" : ""));
