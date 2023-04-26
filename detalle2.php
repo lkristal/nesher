@@ -33,7 +33,7 @@
                         ?>
                             <a type="button" target="_blank" href="files/<?=$rowfiles["path"] ?>"
                                 class="btn btn-primary btn-lg px-4 me-md-2">
-                                <?=$rowfiles["path"] ?>
+                                <?=substr($rowfiles["path"],0, strlen($rowfiles["path"])-4) ?>
                             </a>
                             <?php
                             }

@@ -30,7 +30,7 @@
 								<a href="detalle2.php?slug=<?=$row["slug"] ?>">
 							  		<img src="images/<?=$row["path"] ?>" class="d-block w-100" alt="<?=$row["name"] ?>">
 								</a>
-								<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50">
+								<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50" style="bottom:-0.75rem;padding-top:0;padding-bottom:0;">
 									<h5><?=$row["name"] ?></h5>
 									<p><?=$row["description"] ?></p>
 								</div>

@@ -11,7 +11,7 @@
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
 	<div class="container-fluid">
 		<a class="navbar-brand" href=".">
-			<img src="images/logo.jpg" alt="" width="232" height="71" class="d-inline-block align-text-top">
+			<img src="images/logo.png" alt="" width="232" height="71" class="d-inline-block align-text-top">
 		</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 				aria-expanded="false" aria-label="Toggle navigation">

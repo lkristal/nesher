@@ -30,7 +30,7 @@
                         ?>
                             <a type="button" target="_blank" href="files/<?=$rowfiles["path"] ?>"
                                 class="btn btn-primary btn-lg px-4 me-md-2">
-                                <?=$rowfiles["path"] ?>
+                                <?=substr($rowfiles["path"],0, strlen($rowfiles["path"])-4) ?>
                             </a>
                             <?php
                             }
@@ -51,7 +51,46 @@
             </div>
 
         <?php
-            $result->free();
+        // ARMO EL CAROUSEL
+        $query = "SELECT p.name, i.path from products p inner join image_product ip on p.id=ip.product_id inner join images i on i.id = ip.image_id where p.slug='". $id . "'";
+        if ($resultcarousel = $mysqli->query($query)) { ?>
+
+        <div class="container">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                    <?php
+                        $active = " active";
+                        while ($rowCarousel = $resultcarousel->fetch_assoc()) {
+                            ?>
+                            <div class="carousel-item<?=$active ?>">
+                                <img class="d-block w-100" src="images/<?=$rowCarousel["path"] ?>" alt="<?=$rowCarousel["name"] ?>">
+                            </div>
+                            <?php
+                            $active="";
+                        }
+                        $resultcarousel->free(); ?>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>   
+            <?php
+        }         
+            // ARMO LOS VIDEOS
+            if ($row["youtubeVideo_video_code"]) {
+                ?>
+                    <div class="container mt-2">
+                        <iframe width="100%" height="600" src="https://www.youtube.com/embed/<?=$row["youtubeVideo_video_code"] ?>?controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                <?php 
+                } 
+                $result->free();
         }
         ?>
 <?php include "footer.php" ?>
