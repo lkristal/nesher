@@ -1,8 +1,24 @@
-	<footer class="border-top footer text-muted fixed-bottom bg-dark">
-		<div class="container">
-			Loyola 61/65 1er Piso (C1414AUA) Ciudad de Buenos Aires - Argentina - 
-			Tel: 54-11-4856-5529 Cel: 54-9-11 4147-0463 - 
-			mail: <a href="mailto:info@nesher.com.ar">info@nesher.com.ar</a>
+	<footer class="nesher-footer mt-auto">
+		<div class="container py-4 py-lg-5">
+			<div class="row align-items-center gy-4">
+				<div class="col-lg-5">
+					<img src="images/logo.png" alt="Nesher" class="footer-logo mb-3">
+					<p class="mb-0 footer-description">Máquinas, equipos y auxiliares para la industria plástica.</p>
+				</div>
+				<div class="col-sm-6 col-lg-4">
+					<p class="footer-title">Contacto</p>
+					<a href="tel:+541148565529" class="footer-link d-block">Tel: 54-11-4856-5529</a>
+					<a href="tel:+5491141470463" class="footer-link d-block">Cel: 54-9-11 4147-0463</a>
+					<a href="mailto:info@nesher.com.ar" class="footer-link d-block">info@nesher.com.ar</a>
+				</div>
+				<div class="col-sm-6 col-lg-3">
+					<p class="footer-title">Ubicación</p>
+					<p class="mb-0 footer-description">Loyola 61/65, 1er Piso<br>(C1414AUA) Ciudad de Buenos Aires<br>Argentina</p>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom py-3">
+			<div class="container small">Nesher S.R.L. · Industria y tecnología</div>
 		</div>
 	</footer>
 

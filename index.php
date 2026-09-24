@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<?php include "head.php" ?>
 <body>
     <header>
 		 <?php include "menu.php" ?>
     </header>
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+		<main role="main">
+			<section class="home-hero">
+			<div id="carouselExampleCaptions" class="carousel slide hero-carousel" data-bs-ride="carousel">
 				<div class="carousel-indicators">
 				<?php
 					$query = "SELECT name, description, slug,  images.path from products inner join images on images.id = products.primary_image_id where products.deleted_at is null AND slide_order>0 ORDER BY slide_order";
@@ -28,11 +28,13 @@
 						?>
 							<div class="carousel-item <?=$active ?>">
 								<a href="detalle2.php?slug=<?=$row["slug"] ?>">
-							  		<img src="images/<?=$row["path"] ?>" class="d-block w-100" alt="<?=$row["name"] ?>">
+							  		<img src="images/<?=$row["path"] ?>" class="d-block w-100 hero-image" alt="<?=$row["name"] ?>">
 								</a>
-								<div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50" style="bottom:-0.75rem;padding-top:0;padding-bottom:0;">
-									<h5><?=$row["name"] ?></h5>
+								<div class="carousel-caption text-start">
+									<span class="eyebrow">Tecnología para la industria plástica</span>
+									<h1><?=$row["name"] ?></h1>
 									<p><?=$row["description"] ?></p>
+									<a href="detalle2.php?slug=<?=$row["slug"] ?>" class="btn btn-nesher btn-lg">Conocer el producto</a>
 								</div>
 							</div>
 							<?php
@@ -51,19 +53,31 @@
 					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
+			</section>
+			<section class="products-section py-5 py-lg-6">
 			<div class="container">
-				<div class="row">
+				<div class="section-heading text-center mx-auto mb-4 mb-lg-5">
+					<span class="eyebrow text-primary">Productos destacados</span>
+					<h2>Soluciones que impulsan su producción</h2>
+					<p>Equipamiento confiable para optimizar cada etapa del proceso industrial.</p>
+				</div>
+				<div class="row g-4">
 					<?php 
 						$query = "SELECT name, slug, description, images.path from products inner join images on images.id = products.list_image_id where products.deleted_at is null AND home_highlighted=1";
 						if ($result = $mysqli->query($query)) {
 							while ($row = $result->fetch_assoc()) {
 						?>
-							<div class="col-12 col-md-4">
-								<div class="card m-2 bg-dark bg-opacity-25">
-									<img class="card-img-top" class="w-100" src="images/<?=$row["path"] ?>" alt="<?=$row["name"] ?>">
-									<div class="card-body">
+							<div class="col-12 col-md-6 col-lg-4">
+								<div class="card product-card h-100">
+									<div class="product-image-wrap">
+									  <a href="detalle.php?slug=<?=$row["slug"] ?>" class="product-link mt-auto">
+										<img class="card-img-top" src="images/<?=$row["path"] ?>" alt="<?=$row["name"] ?>">
+									  </a>
+									</div>
+									<div class="card-body d-flex flex-column">
 									  <h5 class="card-title"><?=$row["name"] ?></h5>
-									  <a href="detalle.php?slug=<?=$row["slug"] ?>" class="btn btn-primary">Ver Mas</a>
+									  <p class="card-text product-description"><?=$row["description"] ?></p>
+									  <a href="detalle.php?slug=<?=$row["slug"] ?>" class="product-link mt-auto">Ver producto <span aria-hidden="true">→</span></a>
 									</div>
 								 </div>
 							</div>
@@ -72,9 +86,9 @@
 							$result->free();
 						}
 						?>
-			  </div>
+				</div>
 			</div>
+			</section>
         </main>
-    </div>
 
 <?php include "footer.php" ?>

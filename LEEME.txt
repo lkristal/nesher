@@ -1,0 +1,25 @@
+REDISEÑO BOOTSTRAP — NESHER
+
+Archivos incluidos
+- index.php
+- categoria.php
+- detalle.php
+- detalle2.php
+- videos.php
+- head.php
+- head-detalle.php
+- menu.php
+- footer.php
+- assets/site.css
+
+Instalación
+1. Realizar una copia de seguridad de los archivos actuales.
+2. Subir los archivos PHP a la raíz del sitio, conservando estos nombres.
+3. Subir site.css dentro de la carpeta assets.
+4. No es necesario modificar la base de datos ni el archivo conexion.php.
+5. Si el navegador conserva el diseño anterior, actualizar con Ctrl+F5.
+
+Alcance del cambio
+- Se mantuvieron las consultas, variables, redirecciones y rutas del sitio.
+- Se modificaron solamente la estructura visual, las clases Bootstrap y CSS.
+- El diseño es adaptable a computadoras, tablets y teléfonos.

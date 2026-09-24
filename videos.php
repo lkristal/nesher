@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <?php include "head.php" ?>
 <body>
     <header>
 		 <?php include "menu.php" ?>
     </header>
 
+    <main>
     <?php
         // ARMO EL JUMBOTRON 
         if (!isset($_GET["slug"])) {
@@ -17,21 +18,28 @@
         if ($result = $mysqli->query($query)) {
             $row = $result->fetch_assoc();
         ?>
-            <div class="container">
-                <div class="col-12 col-md-12">
-                    <h1 class="display-5 fw-bold lh-1 mb-3"><?=$row["name"] ?></h1>                </div>
-            </div>
+            <section class="page-header video-page-header">
+                <div class="container">
+                    <span class="eyebrow">Contenido audiovisual</span>
+                    <h1><?=$row["name"] ?></h1>
+                </div>
+            </section>
         <?php
             // ARMO LOS VIDEOS
             if ($row["youtubeVideo_video_code"]) {
             ?>
+                <section class="video-section py-5">
                 <div class="container">
-                    <iframe width="100%" height="600" src="https://www.youtube.com/embed/<?=$row["youtubeVideo_video_code"] ?>?controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    <div class="ratio ratio-16x9 video-frame">
+                        <iframe src="https://www.youtube.com/embed/<?=$row["youtubeVideo_video_code"] ?>?controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </div>
+                </section>
             <?php 
             } 
             $result->free();
         }
         ?>
+            </main>
 
 <?php include "footer.php" ?>
