@@ -124,65 +124,213 @@ a { color: var(--nesher-blue-dark); }
   transform: translateY(-1px);
 }
 
-/* Portada */
-.home-hero { background: var(--nesher-ink); }
-.hero-carousel .carousel-item { position: relative; min-height: 500px; }
+/* ========================================
+   CAROUSEL DE PORTADA
+======================================== */
 
+/* Fondo blanco del carrusel */
+.home-hero,
+.hero-carousel,
+.hero-carousel .carousel-inner,
+.hero-carousel .carousel-item {
+  background-color: #ffffff;
+}
+
+.hero-carousel .carousel-item {
+  position: relative;
+  min-height: 500px;
+}
+
+/* Elimina el degradado general sobre la imagen */
 .hero-carousel .carousel-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(90deg, rgba(8, 17, 24, 0.88) 0%, rgba(8, 17, 24, 0.55) 45%, rgba(8, 17, 24, 0.06) 78%);
+  display: none;
 }
 
+/* Imagen PNG transparente */
 .hero-image {
+  display: block;
+  width: 100%;
   height: clamp(500px, 61vw, 670px);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background-color: #ffffff;
 }
 
+/* Recuadro negro transparente detrás del texto */
 .hero-carousel .carousel-caption {
   right: auto;
   bottom: 50%;
   left: max(7.5%, calc((100% - 1140px) / 2));
   z-index: 2;
+
   width: min(610px, 66%);
-  padding: 0;
+  padding: 2rem;
+
+  text-align: left;
+
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
   transform: translateY(50%);
 }
 
-.hero-carousel .carousel-caption .eyebrow { color: #7dd7f3; }
+/* Texto pequeño superior */
+.hero-carousel .carousel-caption .eyebrow {
+  color: #7dd7f3;
+  text-shadow: none;
+}
 
+/* Título principal */
 .hero-carousel .carousel-caption h1 {
   margin-bottom: 1rem;
-  color: #fff;
+
+  color: #ffffff;
   font-size: clamp(2rem, 4.5vw, 4.2rem);
   font-weight: 750;
   letter-spacing: -0.04em;
   line-height: 1.04;
+
+  text-shadow: none;
 }
 
+/* Descripción */
 .hero-carousel .carousel-caption p {
   display: -webkit-box;
+
   max-width: 570px;
   margin-bottom: 1.5rem;
   overflow: hidden;
-  color: rgba(255, 255, 255, 0.82);
+
+  color: rgba(255, 255, 255, 0.88);
   font-size: clamp(1rem, 1.5vw, 1.2rem);
+
+  text-shadow: none;
+
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
 
-.hero-carousel .carousel-indicators { z-index: 3; }
+/* Indicadores inferiores */
+.hero-carousel .carousel-indicators {
+  z-index: 3;
+}
+
 .hero-carousel .carousel-indicators [data-bs-target] {
   width: 32px;
   height: 4px;
+
   border: 0;
   border-radius: 10px;
+
+  background-color: var(--nesher-blue);
+  opacity: 0.4;
 }
 
+.hero-carousel .carousel-indicators .active {
+  opacity: 1;
+}
+
+/* Botones circulares de navegación */
+.hero-carousel .carousel-control-prev,
+.hero-carousel .carousel-control-next {
+  top: 50%;
+  bottom: auto;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.88);
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
+
+  opacity: 0.85;
+  transform: translateY(-50%);
+}
+
+.hero-carousel .carousel-control-prev {
+  left: 1rem;
+}
+
+.hero-carousel .carousel-control-next {
+  right: 1rem;
+}
+
+.hero-carousel .carousel-control-prev:hover,
+.hero-carousel .carousel-control-next:hover {
+  opacity: 1;
+}
+
+/* Convierte las flechas blancas de Bootstrap en oscuras */
+.hero-carousel .carousel-control-prev-icon,
+.hero-carousel .carousel-control-next-icon {
+  width: 22px;
+  height: 22px;
+
+  filter: invert(1) grayscale(1);
+}
+
+/* ========================================
+   CAROUSEL EN CELULARES
+======================================== */
+
+@media (max-width: 575.98px) {
+
+  .hero-carousel .carousel-item,
+  .hero-image {
+    min-height: 510px;
+    height: 510px;
+  }
+
+  .hero-image {
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  /* Recuadro negro en celular */
+  .hero-carousel .carousel-caption {
+    right: 1rem;
+    bottom: 3.5rem;
+    left: 1rem;
+
+    width: auto;
+    padding: 1.25rem;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+
+    transform: none;
+  }
+
+  .hero-carousel .carousel-caption .eyebrow {
+    margin-bottom: 0.4rem;
+    font-size: 0.72rem;
+  }
+
+  .hero-carousel .carousel-caption h1 {
+    margin-bottom: 0.75rem;
+    font-size: 2rem;
+  }
+
+  .hero-carousel .carousel-caption p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+
+    -webkit-line-clamp: 2;
+  }
+
+  /* Oculta las flechas en celular */
+  .hero-carousel .carousel-control-prev,
+  .hero-carousel .carousel-control-next {
+    display: none;
+  }
+}
 /* Listados */
 .products-section { background: var(--nesher-light); }
 

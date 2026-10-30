@@ -10,6 +10,7 @@
 					<a href="tel:+541148565529" class="footer-link d-block">Tel: 54-11-4856-5529</a>
 					<a href="tel:+5491141470463" class="footer-link d-block">Cel: 54-9-11 4147-0463</a>
 					<a href="mailto:info@nesher.com.ar" class="footer-link d-block">info@nesher.com.ar</a>
+					<a href="mailto:nesher39@gmail.com" class="footer-link d-block">nesher39@gmail.com</a>
 				</div>
 				<div class="col-sm-6 col-lg-3">
 					<p class="footer-title">Ubicación</p>

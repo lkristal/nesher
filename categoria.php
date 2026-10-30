@@ -10,6 +10,7 @@
             $innerid = "primary_image_id";               
             break;
         case 8:
+        case 10:
             $detalle = "videos.php";
             $innerid = "list_image_id";               
             break;
